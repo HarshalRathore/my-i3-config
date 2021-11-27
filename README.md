@@ -1,8 +1,9 @@
 # Sup bitches!!
 
+### Installation
 ```mkdir harshal && cd harshal && wget -O shell.sh https://raw.githubusercontent.com/HarshalRathore/My-i3wm-config/master/shellscript.sh && chmod +x shell.sh && ./shell.sh y```
 
-How it'll look!
+## How it'll look!
 
 ![desktop](https://github.com/HarshalRathore/my-i3-config/blob/main/assets/Saturday%2027%20November%202021%2011:56:32%20PM%20IST.png)
 
