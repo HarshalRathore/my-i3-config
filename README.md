@@ -4,10 +4,10 @@
 
 How it'll look!
 
-![desktop](/assets/Saturday 27 November 2021 11:56:32 PM IST.png)
+![desktop](https://github.com/HarshalRathore/my-i3-config/blob/main/assets/Saturday%2027%20November%202021%2011:56:32%20PM%20IST.png)
 
-![alacritty](/assets/Saturday 27 November 2021 11:56:46 PM IST.png)
+![alacritty](https://github.com/HarshalRathore/my-i3-config/blob/main/assets/Saturday%2027%20November%202021%2011:56:46%20PM%20IST.png)
 
-![alacritty-multi-window](/assets/Saturday 27 November 2021 11:56:53 PM IST.png)
+![alacritty-multi-window](https://github.com/HarshalRathore/my-i3-config/blob/main/assets/Saturday%2027%20November%202021%2011:56:53%20PM%20IST.png)
 
-![kitty](/assets/Saturday 27 November 2021 11:58:20 PM IST.png)
+![kitty](https://github.com/HarshalRathore/my-i3-config/blob/main/assets/Saturday%2027%20November%202021%2011:58:20%20PM%20IST.png)
