@@ -12,10 +12,10 @@ sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 #syntax-highlighting
-sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
-git clone https://github.com/HarshalRathore/My-i3wm-config.git
-cd My-i3wm-config
+git clone https://github.com/HarshalRathore/my-i3-config.git
+cd my-i3-config
 
 config_path=$(pwd)
 cp -R .config ~/
@@ -30,10 +30,9 @@ mv harshal/.robbyrussell.zsh-theme harshal/robbyrussell.zsh-theme
 cp harshal/.robbyrussell.zsh-theme ~/.oh-my-zsh/themes/robbyrussell.zsh-theme
 
 wget https://raw.githubusercontent.com/endeavouros-team/EndeavourOS-packages-lists/master/i3
-sudo pacman -S --needed - < i3
+yes y | sudo pacman -S --needed - < i3
 
-echo "Do you want to write EndevourOS repository to pacman.conf and pacman.d[y/n]"
-if [[ $(cat /etc/*-release | awk -F '=' '{if(NR==2)print $2 }') != "EndeavourOS" && $1 == "y" ]]; then
+if [[ $(cat /etc/*-release | awk -F '=' '{if(NR==2)print $2 }') != "EndeavourOS" ]]; then
 sudo echo "
 [endeavouros]
 SigLevel = PackageRequired
