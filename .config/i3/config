@@ -147,7 +147,7 @@ bindcode $mod+Shift+80 	 move container to workspace  $ws8
 bindcode $mod+Shift+81 	 move container to workspace  $ws9
 bindcode $mod+Shift+90 	 move container to workspace  $ws10
 
-#r resize window (you can also use the mouse for that):
+# resize window (you can also use the mouse for that):
 mode "resize" {
 # These bindings trigger as soon as you enter the resize mode
 # Pressing left will shrink the window’s width.
@@ -538,7 +538,7 @@ bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection c
 
 ### Starting Up scripts/applications/services ###
 bindsym $mod+Shift+Return exec /usr/bin/kitty
-exec --no-startup-id picom
+exec_always --no-startup-id exec /usr/bin/picom 
 exec --no-startup-id variety
 exec --no-startup-id "gnome-settings-daemon"
 exec_always --no-startup-id kdeconnect-indicator
