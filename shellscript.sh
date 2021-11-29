@@ -4,7 +4,7 @@ yes y | sudo pacman -S --needed git base-devel
 
 #ohmyzsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
+exit
 #starshipt prompt
 sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 
@@ -64,5 +64,9 @@ cd $config_path
 #done < aur_pkgs
 yay -S --needed - < aur_pkgs
 
+# installing vim-plugin manager
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+pip3 install --user neovim
+
 yes y | sudo pacman -Syyu
-chsh -s $(which zsh)
+
