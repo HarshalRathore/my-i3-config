@@ -411,6 +411,7 @@ for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
 for_window [class="Bluetooth-sendto" instance="bluetooth-sendto"] floating enable
 for_window [class="Pamac-manager"] floating enable
 for_window [class="Gnome-calendar"] floating enable
+for_window [class="Gnome-control-center" instance="gnome-control-center"] floating enable
 ######################################
 # color settings for bar and windows #
 ######################################
