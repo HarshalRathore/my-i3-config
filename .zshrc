@@ -70,7 +70,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting command-not-found colored-man-pages )
+plugins=(git git-extras gitfast git-prompt zsh-autosuggestions zsh-syntax-highlighting colored-man-pages )
 
 source $ZSH/oh-my-zsh.sh
 
@@ -112,6 +112,7 @@ alias cls="clear"
 alias x="exit"
 alias screenshot="grep -A 7 '# Feature' ~/.config/i3/config"
 alias go='git commit -m "..." && git push'
+alias stats="git status -uno"
 ##########################
 
 ### RANDOM COLOR SCRIPT ###
