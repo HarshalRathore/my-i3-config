@@ -208,9 +208,14 @@ bindsym $mod+F1 exec xed ~/.config/i3/keybindings
 bindsym XF86MonBrightnessUp exec xbacklight +10
 bindsym XF86MonBrightnessDown exec xbacklight -10
 
-# CosmicByte keybinding for brightness 
+# cosmicbyte keybinding for brightness 
 bindsym Control+Up exec "xbacklight -inc 10; notify-send 'brightness up'"
 bindsym Control+Down exec "xbacklight -dec 10; notify-send 'brightness down'"
+
+# cosmicbyte keybinding
+bindsym F12 exec rofi -modi drun -show drun \
+         -config ~/.config/rofi.endevourOS/rofidmenu.rasi
+bindsym F11 exec /usr/bin/gnome-calculator
 
 # change focus
 bindsym $mod+j focus left
@@ -505,8 +510,6 @@ strip_workspace_numbers yes
 bindsym $mod+d exec rofi -modi drun -show drun \
 		-config ~/.config/rofi.endevourOS/rofidmenu.rasi
                 
-bindsym F9 exec rofi -modi drun -show drun \
-		-config ~/.config/rofi.endevourOS/rofidmenu.rasi
 		
 ## rofi bindings for window menu (two bindings F10/$mod+t)
 
