@@ -113,8 +113,14 @@ alias x="exit"
 alias screenshot="grep -A 7 '# Feature' ~/.config/i3/config"
 alias go='git commit -m "..." && git push'
 alias stats="git status -uno"
+alias ls="exa"
+alias la="exa -a"
+alias lla="exa -la"
+alias ll="exa -l"
+alias l="exa -lah"
+alias cat="bat"
 ##########################
 
 ### RANDOM COLOR SCRIPT ###
 colorscript random
-
+export LANG=en_US.UTF-8
