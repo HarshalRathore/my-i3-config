@@ -187,11 +187,20 @@ _Pacdiff() {
 # alias pacdiff=_Pacdiff
 ################################################################################
 eval "$(starship init bash)"
-#### activating github key ########
+#### activating github key ####
 killall ssh-agent >> /dev/null 2>&1
 eval `ssh-agent` >> /dev/null 2>&1
 ssh-add ~/.ssh/id_ed25519_harshalrathore2014 ~/.ssh/id_ed25    519_harshal24ai017 >> /dev/null 2>&1
-##################################
+##########################
 alias screenshot="grep -A 7 '# Feature' ~/.config/i3/config"
 alias x="exit"
 alias cls="clear"
+alias ls="exa"
+alias la="exa -a"
+alias lla="exa -la"
+alias ll="exa -l"
+alias l="exa -lah"
+alias cat="bat"
+##########################
+
+export LANG=en_US.UTF-8
