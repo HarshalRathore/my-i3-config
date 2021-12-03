@@ -6,7 +6,7 @@ Below installation method is not recommended it may or may not work as expected.
 
 You can also manually copy these files and run commands that youd like manually from the script that promesis the best result.
 
-Also any contribution to the shell script will be appreciated Thankx.
+Also any contribution to the [shell script](https://github.com/HarshalRathore/my-i3-config/blob/main/shellscript.sh) will be appreciated Thankx.
 
 ## How it'll look!
 
