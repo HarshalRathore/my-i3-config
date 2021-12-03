@@ -14,7 +14,6 @@ eog-plugins
 neovim
 python-pip
 blueberry
-pacui-git
 bat
 exa
 ripgrep
