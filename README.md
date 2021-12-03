@@ -1,7 +1,12 @@
 # Sup bitches!!
 
+Below installation method is not recommended it may or may not work as expected. If you'r system is something like Manjaro then strictly not recommended, you are on your own if your system breaks.
 ### Installation
 ```mkdir harshal && cd harshal && wget -O shell.sh https://raw.githubusercontent.com/HarshalRathore/my-i3-config/main/shellscript.sh && chmod +x shell.sh && ./shell.sh```
+
+You can also manually copy these files and run commands that youd like manually from the script that promesis the best result.
+
+Also any contribution to the shell script will be appreciated Thankx.
 
 ## How it'll look!
 
