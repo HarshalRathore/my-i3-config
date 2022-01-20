@@ -1,0 +1,7 @@
+#!/bin/sh
+
+MPATH=~/Downloads/videos/lofi/
+
+# kill existing session
+pkill -f mpv-mini
+mpv --x11-name=mpv-mini --volume=50 "$( find ${MPATH} -regex '.*\.\(mkv\|mp4\|webm\)' | shuf -n 1 )"

@@ -100,6 +100,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Exporting environment variables
+export PATH=$PATH:/home/harshal/.local/share/gem/ruby/3.0.0/bin:/home/harshal/.local/bin
+
 ####### Starting SSH-AGENT ########
 killall ssh-agent >> /dev/null 2>&1
 eval `ssh-agent` >> /dev/null 2>&1 
@@ -108,7 +111,7 @@ ssh-add ~/.ssh/id_ed25519_harshalrathore2014 ~/.ssh/id_ed25519_harshal24ai017 >>
 
 ######## Aliases #########
 alias config="nvim ~/.config/i3/config"
-alias cls="clear"
+alias cls="clear && source ~/.zshrc"
 alias x="exit"
 alias screenshot="grep -A 7 '# Feature' ~/.config/i3/config"
 alias go='git commit -m "..." && git push'
@@ -119,8 +122,10 @@ alias lla="exa -la"
 alias ll="exa -l"
 alias l="exa -lah"
 alias cat="bat"
+alias lc="colorls"
 ##########################
 
 ### RANDOM COLOR SCRIPT ###
 colorscript random
+
 export LANG=en_US.UTF-8

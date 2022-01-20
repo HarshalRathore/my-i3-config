@@ -186,6 +186,9 @@ _Pacdiff() {
 # alias ef='_open_files_for_editing'     # 'ef' opens given file(s) for editing
 # alias pacdiff=_Pacdiff
 ################################################################################
+### PATH variabble ###
+export PATH=$PATH:/home/harshal/.local/share/gem/ruby/3.0.0/bin:/home/harshal/.local/bin
+
 eval "$(starship init bash)"
 #### activating github key ####
 killall ssh-agent >> /dev/null 2>&1
@@ -201,6 +204,12 @@ alias lla="exa -la"
 alias ll="exa -l"
 alias l="exa -lah"
 alias cat="bat"
+alias restart="source ~/.bashrc && clear"
 ##########################
 
 export LANG=en_US.UTF-8
+
+
+# BEGIN_KITTY_SHELL_INTEGRATION
+if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
+# END_KITTY_SHELL_INTEGRATION

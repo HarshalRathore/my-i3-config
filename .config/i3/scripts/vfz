@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# update: replaced `find` with `ripgrep`
+
+file=$(rg --files --hidden | fzf)
+[[ "$file" == "" ]] && exit || vim $file

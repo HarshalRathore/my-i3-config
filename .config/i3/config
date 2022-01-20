@@ -24,7 +24,7 @@
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:Noto Sans Regular 10
+font pango:JetBrainsMono Regular 10
 #font pango:System San Francisco Display 10
 # set the mod key to the winkey:
 set $mod Mod4
@@ -58,14 +58,14 @@ new_window pixel 1
 gaps inner 6
 gaps outer 3
 
-set $ws1 "1:"
-set $ws2 "2:"
-set $ws3 "3:"
-set $ws4 "4:"
-set $ws5 "5:"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
+set $ws1 "1: "
+set $ws2 "2: "
+set $ws3 "3: "
+set $ws4 "4: "
+set $ws5 "5: "
+set $ws6 "6: "
+set $ws7 "7: "
+set $ws8 "8:"
 set $ws9 "9"
 set $ws10 "10"
 
@@ -185,9 +185,19 @@ bindsym $mod+Return exec alacritty
 # kill focused window
 bindsym $mod+c kill
 
-# exit-menu
+                                                    ######################
+                                                    #     exit-menus     #
+                                                    ######################
+# <<BROKEN>>
+# EndevourOS themed exit-menu
 #bindsym $mod+Shift+e exec ~/.config/i3/scripts/powermenu
-bindsym $mod+Shift+e exec ~/.config/rofi/powermenu/powermenu.sh
+
+# arc-dark themed / requires fontawesome
+#bindsym $mod+Shift+e exec ~/.config/rofi/powermenu/arc-dark-theme/powermenu.sh
+
+# Papirus themed / requires pacman -S papirus-icon-theme
+bindsym $mod+Shift+e exec  rofi -modi 'Powermenu:~/.config/rofi/powermenu/papirus/powermenu.sh' -theme ~/.config/rofi/powermenu/papirus/powermenu.rasi -show Powermenu -icon-theme "Papirus"
+
 # Lock the system
 # lock with a picture:
 #bindsym $mod+l exec i3lock --image  ~/.config/i3/i3-lock-screen.png
@@ -214,7 +224,7 @@ bindsym Control+Down exec "xbacklight -dec 10; notify-send 'brightness down'"
 
 # cosmicbyte keybinding
 bindsym F12 exec rofi -modi drun -show drun \
-         -config ~/.config/rofi.endevourOS/rofidmenu.rasi
+         -config ~/.config/rofi/launcher/endevourOS-theme/rofidmenu.rasi
 bindsym F11 exec /usr/bin/gnome-calculator
 
 # change focus
@@ -303,7 +313,7 @@ bindsym $mod+p exec /usr/local/bin/switch-audio-port
 ## App shortcuts
 bindsym $mod+w exec /usr/bin/firefox
 bindsym $mod+Shift+w exec /usr/bin/brave
-bindsym $mod+n exec /usr/bin/thunar
+bindsym $mod+n exec /usr/bin/nautilus
 bindsym $mod+i exec /usr/bin/dm-websearch
 bindsym $alt+space exec /usr/bin/dm-hub
 #bindsym Print exec "scrot ~/%Y-%m-%d-%T-screenshot.png"
@@ -314,16 +324,6 @@ bindsym $alt+space exec /usr/bin/dm-hub
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1:"
-set $ws2 "2:"
-set $ws3 "3:"
-set $ws4 "4:"
-set $ws5 "5:"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
 
 # use workspaces on different displays:
 # where you have to replace VGA-0/HDMI-0 with the names for your displays 
@@ -339,7 +339,7 @@ assign [class="Xfce4-terminal"] $ws1
 assign [class="(?i)brave-browser"] $ws2
 assign [class="(?i)firefox"] $ws2
 assign [class="Code"] $ws3
-assign [class="thunar"] $ws4
+assign [class="Org.gnome.Nautilus"] $ws4
 assign [class="TelegramDesktop"] $ws5
 
 
@@ -350,6 +350,13 @@ for_window [class=Code] focus
 for_window [class=Org.gnome.Nautilus] focus
 for_window [class=TelegramDesktop] focus
 for_window [class=brave-browser] focus
+
+# Set application specific windows border width 
+for_window [class=Alacritty] border pixel 3 
+for_window [class=(?i)firefox] border pixel 0 
+for_window [class="Brave-browser"] border pixel 0 
+for_window [class=Code] border pixel 0 
+
 #############################################
 # autostart applications/services on login: #
 #############################################
@@ -361,7 +368,7 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # keep in mind that it can cause issues 
 # when second to i3 a DE is installed or mixed usage of i3 + xfce4 or GNOME
 # in this cases better disable dex and use manual starting apps using xdg/autostart
-exec --no-startup-id dex -a -s /etc/xdg/autostart/:~/.config/autostart/
+#exec --no-startup-id dex -a -s /etc/xdg/autostart/:~/.config/autostart/
 
 # num lock activated
 exec --no-startup-id numlockx on
@@ -412,6 +419,7 @@ for_window [class="Bluetooth-sendto" instance="bluetooth-sendto"] floating enabl
 for_window [class="Pamac-manager"] floating enable
 for_window [class="Gnome-calendar"] floating enable
 for_window [class="Gnome-control-center" instance="gnome-control-center"] floating enable
+for_window [class="Eog" instance="eog"] floating enable
 ######################################
 # color settings for bar and windows #
 ######################################
@@ -431,20 +439,26 @@ set $yellowbrown	#e1b700
 
 # define colors for windows:
 #class		        	border		bground		text		indicator	child_border
-client.focused		    $lightblue	$darkblue	$white		$purple		$mediumgrey
-client.unfocused	    $darkblue	$darkblue	$grey		$purple		$darkgrey
-client.focused_inactive	$darkblue	$darkblue	$grey		$purple		$black
-client.urgent		    $urgentred	$urgentred	$white		$purple		$yellowbrown
+client.focused          #ffffff #ff0054 #ffffff #f1fa8c
+client.focused_inactive #333333 #8338ec #ffffff #484e50
+client.unfocused        #333333 #000000 #bbbbbb #292d2e
+client.urgent           #2f343a #900000 #ffffff #900000
+client.placeholder      #F9FAF9 #061229 #FFFFFF #061229
+client.background       #000000
+
+#client.focused		    $purple	$darkblue	$white		#f1fa8c		$mediumgrey
+#client.unfocused	    $darkblue	$darkblue	$grey		$purple		$darkgrey
+#client.focused_inactive	$darkblue	$darkblue	$grey		$purple		$black
+#client.urgent		    $urgentred	$urgentred	$white		$purple		$yellowbrown
 
 
 ############################################
 # bar settings (input comes from i3blocks) #
 ############################################
-
 # Start i3bar to display a workspace bar 
 # (plus the system information i3status finds out, if available)
 bar {
-		font pango:Noto Sans Regular 10 , FontAwesome 10
+		font pango:JetBrainsMono 10 
 		status_command i3blocks -c ~/.config/i3/i3blocks.conf
 	    	position top 
 #	    	i3bar_command i3bar --transparency
@@ -456,7 +470,7 @@ bar {
 # When strip_workspace_numbers is set to yes, 
 # any workspace that has a name of the form 
 # “[n][:][NAME]” will display only the name.
-strip_workspace_numbers yes
+#strip_workspace_numbers yes
 ##strip_workspace_name no
 
 		    colors {
@@ -464,9 +478,10 @@ strip_workspace_numbers yes
 		    background         $darkgrey
 		    statusline         $white
 #                          		border 		        bg		txt		indicator
-		focused_workspace	$mediumgrey	   	$grey		$darkgrey	$purple
-		active_workspace	$lightblue      	$mediumgrey	$darkgrey	$purple
-		inactive_workspace	$darkgrey   		$darkgrey	$grey		$purple
+	#	focused_workspace	$mediumgrey	   	$grey		$darkgrey	$purple
+		focused_workspace		$darkgrey   	$darkgrey		#5af78e  $purple
+		active_workspace	$lightblue      	$mediumgrey	#f1fa8c	$purple
+		inactive_workspace	$darkgrey   		$darkgrey	#ff5555		$purple
 		urgent_workspace	$urgentred	    	$urgentred	$white		$purple 
 	}
 }
@@ -509,16 +524,16 @@ strip_workspace_numbers yes
 ## rofi bindings fancy application menu (two bindings F9/$mod+d)
 
 bindsym $mod+d exec rofi -modi drun -show drun \
-		-config ~/.config/rofi.endevourOS/rofidmenu.rasi
+		-config ~/.config/rofi/launcher/endevourOS-theme/rofidmenu.rasi
                 
 		
 ## rofi bindings for window menu (two bindings F10/$mod+t)
 
 bindsym $mod+t exec rofi -show window \
-		-config ~/.config/rofi/rofidmenu.rasi 
+		-config ~/.config/rofi/launcher/endevourOS-theme/rofidmenu.rasi 
 
 bindsym F10 exec rofi -show window \
-		-config ~/.config/rofi/rofidmenu.rasi
+		-config ~/.config/rofi/launcher/endevourOS-theme/rofidmenu.rasi
 
 
 # Feature                       Shortcut
@@ -609,10 +624,14 @@ mode "$mode_redshift" {
 # Ctrl+Alt + j <-- move to right workspace
 # Ctrl+Alt + k --> move to left workspace
 workspace_auto_back_and_forth yes
-bindsym Control+b workspace back_and_forth
+bindsym $alt+z workspace back_and_forth
 #bindsym Control+Shift+b move container to workspace back_and_forth; workspace back_and_forth
 bindsym $alt+Control+j workspace prev
 bindsym $alt+Control+k workspace next
 bindsym $alt+Control+Left workspace prev
 bindsym $alt+Control+Right workspace next
 
+exec_always --no-startup-id exec export LANG=en_US.UTF-8
+
+#temporaryly
+exec --no-startup-id /usr/bin/python /usr/bin/autotiling -w 1 3 5 7 9
