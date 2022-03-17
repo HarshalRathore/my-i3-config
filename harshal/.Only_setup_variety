@@ -1,3 +1,0 @@
-#!/bin/sh
-
-mv .config/variety/variety.conf ~/.config/variety/variety.conf
