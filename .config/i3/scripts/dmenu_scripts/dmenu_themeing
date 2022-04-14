@@ -1,0 +1,5 @@
+PROMPT="-p ScreenShot=>"
+LINE="-l 10"
+FONT="-fn JetBrainsMono"
+COLOR='-nf  #48F317  -nb  #282A36  -sb  #A92BFF  -sf  #EEEEEE '
+
