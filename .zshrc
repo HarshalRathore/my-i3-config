@@ -111,7 +111,7 @@ ssh-add ~/.ssh/id_ed25519_harshalrathore2014 ~/.ssh/id_ed25519_harshal24ai017 >>
 
 ######## Aliases #########
 alias config="nvim ~/.config/i3/config"
-alias cls="clear && source ~/.zshrc"
+alias cls="clear && colorscript random"
 alias x="exit"
 alias screenshot="grep -A 7 '# Feature' ~/.config/i3/config"
 alias go='git commit -m "..." && git push'
@@ -123,6 +123,9 @@ alias ll="exa -l"
 alias l="exa -lah"
 alias cat="bat"
 alias lc="colorls"
+alias blocks="vim ~/.config/i3/i3blocks.conf"
+alias starwars="telnet towel.blinkenlights.nl"
+alias starwar="echo 'May be you meant starwars'"
 ##########################
 
 ### RANDOM COLOR SCRIPT ###
