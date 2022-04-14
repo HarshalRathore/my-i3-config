@@ -188,6 +188,7 @@ _Pacdiff() {
 ################################################################################
 ### PATH variabble ###
 export PATH=$PATH:/home/harshal/.local/share/gem/ruby/3.0.0/bin:/home/harshal/.local/bin
+#source /home/harshal/.config/variety/scripts/set_wallpaper   
 
 eval "$(starship init bash)"
 #### activating github key ####
