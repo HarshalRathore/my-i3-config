@@ -17,9 +17,9 @@ xidlehook \
     'xrandr --output "$PRIMARY_DISPLAY" --brightness 1' \
   `# Undim & lock after 60 more seconds` \
   --timer 60 \
-    'xrandr --output "$PRIMARY_DISPLAY" --brightness 1; ~/.config/i3/scripts/blur-lock.sh' \
+    'xrandr --output "$PRIMARY_DISPLAY" --brightness 1 && ~/.config/i3/scripts/blur-lock.sh' \
     '' \
-  `# Finally, suspend 5mins after it locks` \
+  `# Finally, suspend after 300 seconds after it locks` \
   --timer 300 \
     'systemctl suspend' \
     ''

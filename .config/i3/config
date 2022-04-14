@@ -49,7 +49,7 @@ workspace_layout default
 ##############################
 
 #border indicator on windows: 
-new_window pixel 1
+new_window pixel 4
 
 # thin borders
 # hide_edge_borders both
@@ -65,9 +65,9 @@ set $ws4 "4: "
 set $ws5 "5: "
 set $ws6 "6: "
 set $ws7 "7: "
-set $ws8 "8:"
-set $ws9 "9"
-set $ws10 "10"
+set $ws8 "8:{}"
+set $ws9 "9:[]"
+set $ws10 "10:@"
 
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -179,7 +179,6 @@ bindsym $mod+r mode "resize"
 ######################################
 
 # start a terminal
-#bindsym $mod+Return exec xfce4-terminal
 bindsym $mod+Return exec alacritty
 
 # kill focused window
@@ -352,11 +351,13 @@ for_window [class=TelegramDesktop] focus
 for_window [class=brave-browser] focus
 
 # Set application specific windows border width 
-for_window [class=Alacritty] border pixel 3 
-for_window [class=(?i)firefox] border pixel 0 
-for_window [class="Brave-browser"] border pixel 0 
+for_window [class=Alacritty] border pixel 4 
+for_window [class=(?i)firefox] border pixel 2 
+for_window [class="Brave-browser"] border pixel 2 
 for_window [class=Code] border pixel 0 
+for_window [class=kitty] border pixel 4 
 
+smart_borders on
 #############################################
 # autostart applications/services on login: #
 #############################################
@@ -436,20 +437,44 @@ set $darkgrey		#383c4a
 set $grey		#b0b5bd
 set $mediumgrey		#8b8b8b
 set $yellowbrown	#e1b700
+set_from_resource $fg i3wm.color7 #f0f0f0
+set_from_resource $bg i3wm.color2 #f0f0f0
 
-# define colors for windows:
+																								######################################
+																								# define colors for windows(borders) #
+																								######################################
 #class		        	border		bground		text		indicator	child_border
-client.focused          #ffffff #ff0054 #ffffff #f1fa8c
-client.focused_inactive #333333 #8338ec #ffffff #484e50
-client.unfocused        #333333 #000000 #bbbbbb #292d2e
-client.urgent           #2f343a #900000 #ffffff #900000
-client.placeholder      #F9FAF9 #061229 #FFFFFF #061229
-client.background       #000000
+# pywal theme
+client.focused          $bg     $bg     $fg  $bg       $bg
+client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+client.urgent           $bg     $bg     $fg  $bg       $bg
+client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
 
+client.background       #F8F8F2
+
+# EndevourOS theme
 #client.focused		    $purple	$darkblue	$white		#f1fa8c		$mediumgrey
 #client.unfocused	    $darkblue	$darkblue	$grey		$purple		$darkgrey
 #client.focused_inactive	$darkblue	$darkblue	$grey		$purple		$black
 #client.urgent		    $urgentred	$urgentred	$white		$purple		$yellowbrown
+
+# Dracula theme
+#client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+#client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+#client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+#client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+#client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+#client.background       #F8F8F2
+
+# redish border theme
+#client.focused          #ffffff #ff0054 #ffffff #f1fa8c
+#client.focused_inactive #333333 #8338ec #ffffff #484e50
+#client.unfocused        #333333 #000000 #bbbbbb #292d2e
+#client.urgent           #2f343a #900000 #ffffff #900000
+#client.placeholder      #F9FAF9 #061229 #FFFFFF #061229
+#client.background       #000000
+
 
 
 ############################################
@@ -473,6 +498,7 @@ bar {
 #strip_workspace_numbers yes
 ##strip_workspace_name no
 
+# My theme
 		    colors {
 		    separator          $purple
 		    background         $darkgrey
@@ -484,6 +510,34 @@ bar {
 		inactive_workspace	$darkgrey   		$darkgrey	#ff5555		$purple
 		urgent_workspace	$urgentred	    	$urgentred	$white		$purple 
 	}
+
+# Pywal color scheme
+colors {
+separator          #282a36
+background         #282a36
+statusline         $white
+#                          		border 		        bg		txt		indicator
+
+focused_workspace          $bg     $bg     $fg  $bg       
+active_workspace        $bg     $bg     $purple  $bg       
+inactive_workspace   #282a36     #282a36     $bg  $bg       
+urgent_workspace	$urgentred	    	$urgentred	$white		$purple 
+#binding_mode      $bg     $bg     $fg  $bg       
+
+}
+# Dracula theme
+#colors {
+#    background #282A36
+#    statusline #F8F8F2
+#    separator  #44475A
+#
+#    focused_workspace  #44475A #44475A #F8F8F2
+#    active_workspace   #282A36 #44475A #F8F8F2
+#    inactive_workspace #282A36 #282A36 #BFBFBF
+#    urgent_workspace   #FF5555 #FF5555 #F8F8F2
+#    binding_mode       #FF5555 #FF5555 #F8F8F2
+#  }
+
 }
 
 # you can add different bars for multidisplay setups on each display:
@@ -522,10 +576,15 @@ bar {
 #####################################
 
 ## rofi bindings fancy application menu (two bindings F9/$mod+d)
+#bindsym $mod+d exec rofi -modi drun -show drun \
+#		-config ~/.config/rofi/launcher/endevourOS-theme/rofidmenu.rasi
 
 bindsym $mod+d exec rofi -modi drun -show drun \
-		-config ~/.config/rofi/launcher/endevourOS-theme/rofidmenu.rasi
-                
+		-config ~/.config/rofi/launcher/pywall-rofi/rofidmenu.rasi
+
+bindsym $alt+d exec dmenu_run -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg"
+
+bindsym $alt+s exec /usr/bin/i3-dmenu-desktop
 		
 ## rofi bindings for window menu (two bindings F10/$mod+t)
 
@@ -555,14 +614,19 @@ bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t ima
 bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
 bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
+## dmenu script to take screenshots
+bindsym $alt+c exec --no-startup-id ~/.config/i3/scripts/dmenu_scripts/screenshot.sh
+
 ### Starting Up scripts/applications/services ###
-bindsym $mod+Shift+Return exec /usr/bin/kitty
-exec_always --no-startup-id exec /usr/bin/picom 
+bindsym $alt+Return exec /usr/bin/kitty
+#exec_always --no-startup-id exec killall picom 
 exec --no-startup-id variety
 exec --no-startup-id "gnome-settings-daemon"
-exec_always --no-startup-id kdeconnect-indicator
+#exec_always --no-startup-id killall kdeconnect-indicator
 exec --no-startup-id "gnome-keyring-daemon"
 exec_always --no-startup-id "~/.config/i3/scripts/auto_lock-suspend.sh"
+exec_always --no-startup-id exec /usr/bin/picom 
+exec_always --no-startup-id kdeconnect-indicator
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner
@@ -633,5 +697,6 @@ bindsym $alt+Control+Right workspace next
 
 exec_always --no-startup-id exec export LANG=en_US.UTF-8
 
-#temporaryly
-exec --no-startup-id /usr/bin/python /usr/bin/autotiling -w 1 3 5 7 9
+# A script to smartly tilie windows to get max screen real state
+exec_always --no-startup-id  /usr/bin/autotiling
+#exec alacritty -e sudo pacman -Syu --needed --noconfirm 
